@@ -5,7 +5,6 @@
  * @returns {number}
  */
 function calculateSimpleRevenue(purchase, _product) {
-<<<<<<< HEAD
   const { discount, sale_price, quantity } = purchase;
 
   const transDiscount = discount / 100;
@@ -13,9 +12,6 @@ function calculateSimpleRevenue(purchase, _product) {
   const revenue = sale_price * quantity * (1 - transDiscount);
 
   return revenue;
-=======
-   // @TODO: Расчет выручки от операции
->>>>>>> 77d2071a568007c8d153e8403a0c4a7aea0be974
 }
 
 /**
@@ -26,7 +22,6 @@ function calculateSimpleRevenue(purchase, _product) {
  * @returns {number}
  */
 function calculateBonusByProfit(index, total, seller) {
-<<<<<<< HEAD
   const { profit } = seller;
 
   if (index === 0) {
@@ -42,9 +37,6 @@ function calculateBonusByProfit(index, total, seller) {
   }
 
   return profit * 0.05;
-=======
-    // @TODO: Расчет бонуса от позиции в рейтинге
->>>>>>> 77d2071a568007c8d153e8403a0c4a7aea0be974
 }
 
 /**
@@ -54,7 +46,6 @@ function calculateBonusByProfit(index, total, seller) {
  * @returns {{revenue, top_products, bonus, name, sales_count, profit, seller_id}[]}
  */
 function analyzeSalesData(data, options) {
-<<<<<<< HEAD
   if (
     !data ||
     !Array.isArray(data.sellers) ||
@@ -158,21 +149,4 @@ function analyzeSalesData(data, options) {
 
   return result;
   // @TODO: Подготовка итоговой коллекции с нужными полями
-=======
-    // @TODO: Проверка входных данных
-
-    // @TODO: Проверка наличия опций
-
-    // @TODO: Подготовка промежуточных данных для сбора статистики
-
-    // @TODO: Индексация продавцов и товаров для быстрого доступа
-
-    // @TODO: Расчет выручки и прибыли для каждого продавца
-
-    // @TODO: Сортировка продавцов по прибыли
-
-    // @TODO: Назначение премий на основе ранжирования
-
-    // @TODO: Подготовка итоговой коллекции с нужными полями
->>>>>>> 77d2071a568007c8d153e8403a0c4a7aea0be974
 }
