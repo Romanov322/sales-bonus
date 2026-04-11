@@ -11,7 +11,7 @@ function calculateSimpleRevenue(purchase, _product) {
 
   const revenue = sale_price * quantity * (1 - transDiscount);
 
-  return revenue;
+  return +revenue.toFixed(2);
 }
 
 /**
