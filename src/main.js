@@ -25,18 +25,15 @@ function calculateBonusByProfit(index, total, seller) {
   const { profit } = seller;
 
   if (index === 0) {
-    return profit * 0.15;
+    return +(profit * 0.15).toFixed(2);
   }
-
   if (index === 1 || index === 2) {
-    return profit * 0.1;
+    return +(profit * 0.1).toFixed(2);
   }
-
   if (index === total - 1) {
     return 0;
   }
-
-  return profit * 0.05;
+  return +(profit * 0.05).toFixed(2);
 }
 
 /**
