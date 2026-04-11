@@ -11,7 +11,7 @@ function calculateSimpleRevenue(purchase, _product) {
 
   const revenue = sale_price * quantity * (1 - transDiscount);
 
-  return revenue;
+  return Math.round(revenue * 100) / 100;
 }
 
 /**
@@ -36,7 +36,7 @@ function calculateBonusByProfit(index, total, seller) {
     return 0;
   }
 
-  return profit * 0.05;
+  return Math.round(bonus * 100) / 100;
 }
 
 /**
@@ -98,15 +98,15 @@ function analyzeSalesData(data, options) {
     for (const purchase of record.items) {
       const product = productsIndex[purchase.sku];
 
-      const revenue = calculateRevenue(purchase, product);
+      const revenue = Math.round(calculateRevenue(purchase, product) * 100) / 100;
 
-      const cost = product.purchase_price * purchase.quantity;
+      const cost = Math.round((product.purchase_price * purchase.quantity) * 100) / 100;
 
-      const profit = revenue - cost;
+      const profit = Math.round((revenue - cost) * 100) / 100;
 
-      seller.revenue = +(seller.revenue + revenue).toFixed(2);
+      seller.revenue = Math.round((seller.revenue + revenue) * 100) / 100;
 
-      seller.profit = +(seller.profit + profit).toFixed(2);
+      seller.profit = Math.round((seller.profit + profit) * 100) / 100;
 
       const sku = purchase.sku;
       const quantity = purchase.quantity;
@@ -143,7 +143,7 @@ function analyzeSalesData(data, options) {
       profit: +seller.profit.toFixed(2),
       sales_count: seller.sales_count,
       top_products: seller.top_products,
-      bonus: +bonus.toFixed(2),
+      bonus: +bonus.toFixed(2)
     };
   }); // @TODO: Назначение премий на основе ранжирования
 
