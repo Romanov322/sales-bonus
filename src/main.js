@@ -104,9 +104,9 @@ function analyzeSalesData(data, options) {
 
       const profit = revenue - cost;
 
-      seller.revenue += revenue;
+      seller.revenue = +(seller.revenue + revenue).toFixed(2);
 
-      seller.profit += profit;
+      seller.profit = +(seller.profit + profit).toFixed(2);
 
       const sku = purchase.sku;
       const quantity = purchase.quantity;
