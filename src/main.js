@@ -25,18 +25,18 @@ function calculateBonusByProfit(index, total, seller) {
   const { profit } = seller;
 
   if (index === 0) {
-    return profit * 0.15;
+    return Math.round(profit * 0.15 * 100) / 100;
   }
 
   if (index === 1 || index === 2) {
-    return profit * 0.1;
+    return Math.round(profit * 0.1 * 100) / 100;
   }
 
   if (index === total - 1) {
     return 0;
   }
 
-  return Math.round(bonus * 100) / 100;
+  return Math.round(profit * 0.05 * 100) / 100;
 }
 
 /**
