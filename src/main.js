@@ -11,7 +11,7 @@ function calculateSimpleRevenue(purchase, _product) {
 
   const revenue = sale_price * quantity * (1 - transDiscount);
 
-  return +revenue.toFixed(2);
+  return revenue;
 }
 
 /**
@@ -95,12 +95,12 @@ function analyzeSalesData(data, options) {
     for (const purchase of record.items) {
       const product = productsIndex[purchase.sku];
 
-      const revenue = +calculateRevenue(purchase, product).toFixed(2);
-      const cost = +(product.purchase_price * purchase.quantity).toFixed(2);
-      const profit = +(revenue - cost).toFixed(2);
+      const revenue = calculateRevenue(purchase, product);
+      const cost = product.purchase_price * purchase.quantity;
+      const profit = revenue - cost;
 
-      seller.revenue = +(seller.revenue + revenue).toFixed(2);
-      seller.profit = +(seller.profit + profit).toFixed(2);
+      seller.revenue = seller.revenue + revenue;
+      seller.profit = seller.profit + profit;
 
       const totalSold = seller.products_sold[purchase.sku] || 0;
       seller.products_sold[purchase.sku] = totalSold + purchase.quantity;
@@ -123,7 +123,7 @@ function analyzeSalesData(data, options) {
   );
   const total = sortedSellers.length;
 
-  const result = sortedSellers.map((seller, index) => {
+  return sortedSellers.map((seller, index) => {
     const bonus = calculateBonus(index, total, seller);
 
     return {
@@ -136,6 +136,4 @@ function analyzeSalesData(data, options) {
       bonus: +bonus.toFixed(2),
     };
   });
-
-  return result;
 }
